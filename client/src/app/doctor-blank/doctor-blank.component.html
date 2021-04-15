@@ -1,0 +1,39 @@
+<div class="container">
+    <h4>To become a Supervet Veterinary, please fill in the form below!</h4>
+    <h6>The admin will contact you!</h6>
+</div>
+<div class="d-flex flex-column">
+    <mat-form-field appearance="fill">
+        <mat-label>First Name</mat-label>
+        <input matInput #firstName required>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Second Name</mat-label>
+        <input matInput #middleName required>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Last Name </mat-label>
+        <input matInput #lastName required>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Address of the clinic</mat-label>
+        <input matInput #address>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Specialty</mat-label>
+        <input matInput #specialty required>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Phone number</mat-label>
+        <input matInput placeholder="+(359) -893-781-190" [formControl]="phone" required>
+        <mat-error *ngIf="phone.invalid">{{getPhoneErrorMessage()}}</mat-error>
+        <mat-icon matSuffix>phone</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="pat@example.com" [formControl]="email" required>
+        <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
+        <mat-icon matSuffix>email</mat-icon>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="onSubmit(firstName.value,middleName.value,lastName.value,address.value,specialty.value,phone.value)">Submit</button>
+</div>
