@@ -12,8 +12,12 @@ public class Patient extends Person{
 
     public Patient(){}
 
-    public Patient(String userName, String password, String firstName, String middleName, String lastName, String phoneNumber, Set<Appointment> appointments) {
-        super(userName, password, firstName, middleName, lastName, phoneNumber);
+    public Patient(Set<Appointment> appointments) {
+        this.appointments = appointments;
+    }
+
+    public Patient(String email, String password, String firstName, String middleName, String lastName, String phoneNumber, Set<Appointment> appointments) {
+        super(email, password, firstName, middleName, lastName, phoneNumber);
         this.appointments = appointments;
     }
 

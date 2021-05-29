@@ -13,8 +13,8 @@ public class Person extends User{
 
     public Person(){ }
 
-    public Person(String userName, String password, String firstName, String middleName, String lastName, String phoneNumber) {
-        super(userName, password);
+    public Person(String email, String password, String firstName, String middleName, String lastName, String phoneNumber) {
+        super(email, password);
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;

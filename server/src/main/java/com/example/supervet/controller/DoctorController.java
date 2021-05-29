@@ -8,11 +8,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.print.Doc;
 import java.util.List;
 
 @RestController
-//@RequestMapping("/api")
-@CrossOrigin
+@RequestMapping("/api")
 public class DoctorController {
 
     @Autowired
@@ -23,42 +23,61 @@ public class DoctorController {
 
     @RequestMapping(path = "/email")
     @ResponseStatus(value = HttpStatus.OK)
-    public void sendEmail(@RequestBody Doctor doctor){
+    public void sendEmail(@RequestBody Doctor doctor) {
         emailSenderService.sendEmail(doctor);
     }
 
     @PostMapping(path = "/add/doctor")
     @ResponseStatus(value = HttpStatus.OK)
-    public void addDoctor(@RequestBody Doctor doctor){
+    public void addDoctor(@RequestBody Doctor doctor) {
         doctorService.addDoctor(doctor);
     }
 
     @GetMapping(path = "/all/doctors")
-    public ResponseEntity<List<Doctor>>  getAllDoctors(){
-        List<Doctor> allDoctors=doctorService.getAllDoctors();
-        if(allDoctors!=null){
-            return new ResponseEntity<>(allDoctors,HttpStatus.OK);
+    public ResponseEntity<List<Doctor>> getAllDoctors() {
+        List<Doctor> allDoctors = doctorService.getAllDoctors();
+        if (allDoctors != null) {
+            return new ResponseEntity<>(allDoctors, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @GetMapping(path = "/doctors/{address}")
-    public ResponseEntity<List<Doctor>>  getAllDoctorsByAddress(@PathVariable String address){
-        List<Doctor> allDoctors=doctorService.getDoctorsByAddress(address);
-        if(allDoctors!=null){
-            return new ResponseEntity<>(allDoctors,HttpStatus.OK);
+    public ResponseEntity<List<Doctor>> getAllDoctorsByAddress(@PathVariable String address) {
+        List<Doctor> allDoctors = doctorService.getDoctorsByAddress(address);
+        if (allDoctors != null) {
+            return new ResponseEntity<>(allDoctors, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping(path = "/doctors")
-    public ResponseEntity<List<Doctor>>  getAllDoctorsByFullName(@RequestParam String firstName,@RequestParam String middleName,@RequestParam String lastName){
-        List<Doctor> doctors=doctorService.getDoctorsByFullName(firstName,middleName,lastName);
-        if(doctors!=null){
-            return new ResponseEntity<>(doctors,HttpStatus.OK);
+    @GetMapping(path = "/doctors/name")
+    public ResponseEntity<List<Doctor>> getAllDoctorsByFullName(@RequestParam String firstName, @RequestParam String middleName, @RequestParam String lastName) {
+        List<Doctor> doctors = doctorService.getDoctorsByFullName(firstName, middleName, lastName);
+        if (doctors != null) {
+            return new ResponseEntity<>(doctors, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
+    @GetMapping(path = "/doctors/specialty")
+    public ResponseEntity<List<Doctor>> getAllDoctorsBySpecialty(@RequestParam String specialty) {
+        List<Doctor> doctors = doctorService.getDoctorsBySpecialty(specialty);
+        if (doctors != null) {
+            return new ResponseEntity<>(doctors, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping(path = "/doctors/specialtyAndAddress")
+    public ResponseEntity<List<Doctor>> getAllDoctorsBySpecialtyAndAddress(@RequestParam String specialty,@RequestParam String address){
+        List<Doctor> doctors=doctorService.getAllDoctorsBySpecialtyAndAddress(specialty,address);
+        if (doctors != null) {
+            return new ResponseEntity<>(doctors, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
 
 
 

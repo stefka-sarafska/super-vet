@@ -18,8 +18,11 @@ public class Doctor {
     @Id
     private String email;
 
-    @ManyToMany(mappedBy="doctors")
+    @ManyToMany(mappedBy = "doctors")
     private Set<Appointment> appointments;
+
+    public Doctor() {
+    }
 
     public Doctor(String firstName, String middleName, String lastName, String phoneNumber, String specialty, String address, String email, Set<Appointment> appointments) {
         this.firstName = firstName;

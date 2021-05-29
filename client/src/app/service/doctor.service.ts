@@ -11,7 +11,7 @@ export class DoctorService {
 
     sendDoctorRequest(doctor:DoctorTemplate){
         console.log(doctor)
-        return this.http.post<DoctorTemplate>("http://localhost:8080/email", doctor);
+        return this.http.post<DoctorTemplate>("/api/email", doctor);
     }
 
 }

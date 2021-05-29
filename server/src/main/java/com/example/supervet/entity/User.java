@@ -1,5 +1,7 @@
 package com.example.supervet.entity;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
@@ -10,7 +12,9 @@ import javax.persistence.InheritanceType;
 public class User {
 
     @Id
+    @NotNull
     private String email;
+    @NotNull
     private String password;
 
     public User(){}
