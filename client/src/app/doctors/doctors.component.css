@@ -1,0 +1,31 @@
+mat-card {
+    /* max-width: 90%; */
+    /* width: fit-content; */
+    width: 49%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 30px;
+    border: 1px solid #4b3088;
+}
+
+.example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+}
+
+mat-card-actions {
+    text-align: center;
+}
+
+.container {
+    flex-wrap: nowrap;
+    flex-wrap: wrap;
+    flex-wrap: wrap-reverse;
+}
+
+.row {
+    margin-left: auto;
+    margin-right: auto;
+}

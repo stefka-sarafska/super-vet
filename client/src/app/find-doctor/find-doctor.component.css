@@ -1,0 +1,19 @@
+div {
+    text-align: center;
+    width: 50%;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+}
+
+.mat-form-field {
+    text-align: center;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mat-raised-button {
+    width: 20%;
+}

@@ -1,0 +1,7 @@
+<h5>Свободни часове:</h5>
+<div *ngFor="let appointment of appointments">
+    <button mat-button (click)="openBookAppointmentsDialog(appointment)">
+                        <mat-icon>calendar_today</mat-icon>
+                           {{convertDate(appointment.date)}}
+                        </button>
+</div>

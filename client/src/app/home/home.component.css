@@ -7,3 +7,9 @@ button {
     width: 150px;
     margin-top: 50px;
 }
+
+img {
+    background-size: cover;
+    width: 70%;
+    margin-left: 10%;
+}

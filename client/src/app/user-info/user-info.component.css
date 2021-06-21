@@ -1,0 +1,21 @@
+.row,
+.container {
+    /* margin-right: auto;
+    margin-left: auto; */
+    margin-top: 50px;
+    text-align: center;
+}
+
+table {
+    margin-top: 25px;
+    width: 100%;
+}
+
+th.mat-header-cell {
+    text-align: center;
+}
+
+td {
+    text-align: center;
+    padding: 35px 70px 50px 90px;
+}

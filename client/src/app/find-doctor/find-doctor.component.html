@@ -1,0 +1,32 @@
+<app-headers></app-headers>
+<div class="container">
+    <div class="row">
+        <h4>Намерете ветеринарен лекар и резервирайте час за преглед онлайн!</h4>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <mat-form-field appearance="fill">
+            <mat-label>Избери специалност...</mat-label>
+            <mat-select #selectedSpecialty>
+                <mat-option *ngFor="let specialty of specialties" [value]="specialty">
+                    {{specialty}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Избери населено място...</mat-label>
+            <mat-select #selectedAddress>
+                <mat-option *ngFor="let address of addresses" [value]="address">
+                    {{address}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>или търси по име на лекар...</mat-label>
+            <input matInput #selectedName>
+        </mat-form-field>
+    </div>
+
+    <button mat-raised-button color="primary" (click)="onSearch(selectedAddress.value,selectedSpecialty.value,selectedName.value)">Търси</button>
+</div>

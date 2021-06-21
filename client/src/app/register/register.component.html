@@ -1,0 +1,62 @@
+<h2>Регистрация</h2>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="firstName">Име</label>
+        <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+            <div *ngIf="f.firstName.errors.required">First Name is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="middleName">Презиме</label>
+        <input type="text" formControlName="middleName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.middleName.errors }" />
+        <div *ngIf="submitted && f.middleName.errors" class="invalid-feedback">
+            <div *ngIf="f.middleName.errors.required">Middle Name is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="lastName">Фамилия</label>
+        <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+            <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="email">Имейл</label>
+        <input placeholder="pat@example.com" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">email is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="password">Парола</label>
+        <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+            <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="repeatPassword">Потвърди паролата</label>
+        <input type="password" formControlName="repeatPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.repeatPassword.errors }" />
+        <div *ngIf="submitted && f.repeatPassword.errors" class="invalid-feedback">
+            <div *ngIf="f.repeatPassword.errors.required">Password is required</div>
+            <div *ngIf="f.repeatPassword.errors.minlength">Password must be at least 6 characters</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="phoneNumber">Телефон</label>
+        <input type="text" formControlName="phoneNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }" />
+        <div *ngIf="submitted && f.phoneNumber.errors" class="invalid-feedback">
+            <div *ngIf="f.phoneNumber.errors.required">Phone number is required</div>
+        </div>
+    </div>
+    <mat-error *ngIf="currError!==undefined">{{currError.error}}</mat-error>
+    <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Регистрация
+        </button>
+        <a class="btn btn-link" (click)="openLoginDialog()">Отказ</a>
+    </div>
+</form>

@@ -1,11 +1,39 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg">
     <a class="navbar-brand" href="#">Supervet</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
-      </div>
+        <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="/">Начало <span class="sr-only">(current)</span></a>
+        </div>
+        <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="/contacts">Контакти <span class="sr-only">(current)</span></a>
+        </div>
+        <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="/info">Инфо  <span class="sr-only">(current)</span></a>
+        </div>
     </div>
-  </nav>
+    <form class="form-inline my-2 my-lg-0">
+        <div *ngIf="isLoggedIn; else isNotLogged">
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item routerLink="/user/info">
+                  <span>Account</span>
+                </button>
+                <button mat-menu-item (click)="logout()">
+                  <span>LogOut</span>
+                </button>
+            </mat-menu>
+        </div>
+        <ng-template #isNotLogged>
+            <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" (click)="openLoginDialog()">
+                <mat-icon>account_circle</mat-icon>
+              </button>
+
+        </ng-template>
+
+    </form>
+</nav>

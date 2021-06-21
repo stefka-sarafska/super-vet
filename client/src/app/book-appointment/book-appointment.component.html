@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="row">
+        <h5>Детайли за прегледа на {{appointmentDate}}</h5>
+    </div>
+    <div class="row">
+        <h6> Каква е причината за посещението?</h6>
+    </div>
+    <div class="row">
+        <mat-form-field appearance="fill">
+            <mat-label>Избери..</mat-label>
+            <mat-select [(value)]="selectedReason">
+                <mat-option *ngFor="let appointmentReason of appointmentReasons" [value]="appointmentReason">{{appointmentReason}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="row">
+        <button mat-raised-button color="primary" (click)="bookAppointment()">Запази</button>
+    </div>
+</div>

@@ -1,39 +1,71 @@
+<app-headers></app-headers>
 <div class="container">
-    <h4>To become a Supervet Veterinary, please fill in the form below!</h4>
-    <h6>The admin will contact you!</h6>
+    <h4>За да станеш част от платформата, моля попълни формуряла по-долу!</h4>
+    <h6>Ще получиш имейл, когато твоето запитване бъде разгледано!</h6>
 </div>
 <div class="d-flex flex-column">
     <mat-form-field appearance="fill">
-        <mat-label>First Name</mat-label>
+        <mat-label>Име</mat-label>
         <input matInput #firstName required>
     </mat-form-field>
     <mat-form-field appearance="fill">
-        <mat-label>Second Name</mat-label>
+        <mat-label>Презиме</mat-label>
         <input matInput #middleName required>
     </mat-form-field>
     <mat-form-field appearance="fill">
-        <mat-label>Last Name </mat-label>
+        <mat-label>Фамилия</mat-label>
         <input matInput #lastName required>
     </mat-form-field>
     <mat-form-field appearance="fill">
-        <mat-label>Address of the clinic</mat-label>
+        <mat-label>Адрес на клиниката</mat-label>
         <input matInput #address>
     </mat-form-field>
     <mat-form-field appearance="fill">
-        <mat-label>Specialty</mat-label>
+        <mat-label>Специалност</mat-label>
         <input matInput #specialty required>
     </mat-form-field>
     <mat-form-field appearance="fill">
-        <mat-label>Phone number</mat-label>
+        <mat-label>Описание</mat-label>
+        <input matInput #description required>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Образувание</mat-label>
+        <input matInput #formation required>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Квалификации</mat-label>
+        <input matInput #qualifications required>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Биография</mat-label>
+        <input matInput #biography required>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Телефонен номер</mat-label>
         <input matInput placeholder="+(359) -893-781-190" [formControl]="phone" required>
         <mat-error *ngIf="phone.invalid">{{getPhoneErrorMessage()}}</mat-error>
         <mat-icon matSuffix>phone</mat-icon>
     </mat-form-field>
     <mat-form-field appearance="fill">
-        <mat-label>Email</mat-label>
+        <mat-label>Имейл</mat-label>
         <input matInput placeholder="pat@example.com" [formControl]="email" required>
         <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
         <mat-icon matSuffix>email</mat-icon>
     </mat-form-field>
-    <button mat-raised-button color="primary" (click)="onSubmit(firstName.value,middleName.value,lastName.value,address.value,specialty.value,phone.value)">Submit</button>
+    <mat-form-field appearance="fill">
+        <mat-label>Парола</mat-label>
+        <input type="password" matInput #password required>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Потвърди паролата</mat-label>
+        <input type="password" matInput #confirmPassword required>
+    </mat-form-field>
+    <mat-error *ngIf="currError!==undefined">{{currError.error}}</mat-error>
+    <h6>Качете снимка</h6>
+    <input type="file" (change)="onFileChanged($event)">
+    <p *ngIf="selectedFile!==undefined">{{selectedFile.name}}</p>
+    <input type="button" (click)="onUpload()" value="upload">
+    <img *ngIf="url" [src]="url">
+    <hr />
+    <button mat-raised-button color="primary" (click)="onSubmit(firstName.value,middleName.value,lastName.value,password.value,confirmPassword.value,specialty.value,address.value,description.value,formation.value,qualifications.value,biography.value)">Изпрати</button>
 </div>
